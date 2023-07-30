@@ -4,13 +4,24 @@
 # 最大公約数を出力するスクリプト
 #
 
+# 入力引数の存在チェック
+# 入力なし or 入力1個
+# 入力3個以上
+
+# 引数の数をチェック
+if [ ${#} -ne 2 ];then
+  echo -e "[ERROR!] wrong number of arguments (expected 2)"
+  exit 1
+fi
+
+
 # 数値チェック自然数のみ
 is_natural_number () {
     # return 0
   if expr "$1" : "^[0-9]*$" > /dev/null 2>&1;then
     return 0
   else
-    echo -e "$1 is not natural number!"
+    echo -e "[ERROR!] $1 is not natural number!"
     exit 1
   fi
 
@@ -34,3 +45,4 @@ gcd () {
 is_natural_number $1
 is_natural_number $2
 gcd $1 $2
+exit 0
