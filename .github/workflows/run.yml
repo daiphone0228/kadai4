@@ -9,7 +9,3 @@ jobs:
         id: gcd_test
         run: |
           ./gcd_test.sh
-      - name: check result
-        run: echo $CONTEXT
-        env:
-          CONTEXT: ${{ toJSON(steps.gcd_test) }}
