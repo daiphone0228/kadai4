@@ -24,16 +24,15 @@ for NUM in `seq 1 ${TEST_CASE_COUNT}`; do
     EXPECTED_RESULT="\${TEST_CASE${NUM}[3]}"
     RESULT=`./gcd.sh $(eval echo ${GCD_ARGUMENTS})`
 
-    eval echo case${NUM}:${CASE_TITLE}
+    MESSAGE=`eval echo case${NUM}:${CASE_TITLE}`
 
     if [ `eval echo ${CASE_TYPE}` == TRUE ] ; then
         EXPECT=`eval echo ${EXPECTED_RESULT}`
-        [[ ${RESULT} -eq ${EXPECT} ]] && echo -n "TEST_CASE${NUM} OK" || echo -en "TEST_CASE${NUM} NG"
+        [[ ${RESULT} -eq ${EXPECT} ]] && echo "${MESSAGE} OK" || echo -e "${MESSAGE} NG"
     else
         EXPECT=`eval echo ${EXPECTED_RESULT}`
-        [[ ${RESULT} =~ ${EXPECT} ]] && echo -n "TEST_CASE${NUM} OK" || echo -en "TEST_CASE${NUM} NG"
+        [[ ${RESULT} =~ ${EXPECT} ]] && echo "${MESSAGE} OK" || echo -e "${MESSAGE} NG"
     fi
-    echo ''
 done
 
 echo  "Finish all tests"
