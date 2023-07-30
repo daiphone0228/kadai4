@@ -5,5 +5,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: |
+      - name: gcd test
+        id: gcd_test
+        run: |
           ./gcd_test.sh
+      - name: check result
+        run: echo $CONTEXT
+        env:
+          CONTEXT: ${{ toJSON(steps.gcd_test) }}
