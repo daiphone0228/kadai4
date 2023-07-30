@@ -1,4 +1,4 @@
-name: GCF TEST
+name: GCD TEST
 on: [push]
 jobs:
   gcf_test:
