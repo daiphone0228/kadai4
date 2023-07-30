@@ -28,11 +28,19 @@ for NUM in `seq 1 ${TEST_CASE_COUNT}`; do
 
     if [ `eval echo ${CASE_TYPE}` == TRUE ] ; then
         EXPECT=`eval echo ${EXPECTED_RESULT}`
-        [[ ${RESULT} -eq ${EXPECT} ]] && echo "${MESSAGE} OK" || echo -e "${MESSAGE} NG"
+        if [[ ${RESULT} -eq ${EXPECT} ]] ; then
+            echo "${MESSAGE} OK"
+        else
+            echo -e "${MESSAGE} NG"
+        fi
     else
         EXPECT=`eval echo ${EXPECTED_RESULT}`
-        [[ ${RESULT} =~ ${EXPECT} ]] && echo "${MESSAGE} OK" || echo -e "${MESSAGE} NG"
+        if [[ ${RESULT} =~ ${EXPECT} ]] ; then
+            echo "${MESSAGE} OK"
+        else
+            echo -e "${MESSAGE} NG"
+        fi
     fi
 done
 
-echo  "Finish all tests"
+echo  "Finished all tests"
